@@ -22,3 +22,29 @@ app.use(express.static('website'));
 // Setup Server
 const port = 8000;
 app.listen(port, ()=> console.log(`running on port ${port}`))
+
+//GET route that returns 'projectData' object
+app.get('/', getProjectData);
+
+function getProjectData (req, res){
+	res.send(projectData);
+	console.log('Getting projectData: ', projectData)
+};
+
+//POST route that adds incoming data to 'projectData'
+app.post('/addData', postData);
+
+function postData (req, res){
+	const newData = {
+		temperature: req.body.temperature,
+		date: req.body.date,
+		response: req.body.response,
+	}
+
+	try {
+		projectData.push(newData);
+		res.send(projectData);
+	} catch (error) {
+		console.log('Error in server: ', error)
+	}
+}
