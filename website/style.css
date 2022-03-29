@@ -4,16 +4,18 @@ body{
 }
 
 #app{
-    display: grid;
+    /* display: grid;
     grid-auto-rows: minmax(150px, auto);
     /* grid-template-columns:  */
-    height:100vh;
+    /* height:100vh;
     background: #f23557;
     color: #f0d43a;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif; */
+    display: flex;
+    flex-direction: column;
 }
 
 .holder{
