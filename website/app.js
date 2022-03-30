@@ -2,25 +2,22 @@ const apiKey = '47b36918b1e5dd5d56b7aabc4fa1f0fa&units=imperial';
 
 /* Global Variables */
 let baseUrl = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-// let temperature;
 let content = document.getElementById('feelings');
 let zipcode = document.querySelector('#zip');
-
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+1+'/'+ d.getDate()+'/'+ d.getFullYear();
 
 const generateClick = async () => {
 	let generateUrl = `${baseUrl}${zipcode.value}&appid=${apiKey}`;
-	let weather = await getWeatherData(generateUrl)
+	let weather = await getWeatherData(generateUrl);
 	let temperature = weather.main.temp;
-		postData('/addData', {date: newDate, temp: temperature, content: feelings.value})
-		updateUI()
+
+		await postData('/addData', {date: newDate, temp: temperature, content: feelings.value});
+		await updateUI();
 };
-/* Get zipcode value and return the url */
+
 document.getElementById('generate').addEventListener('click', generateClick)
-
-
 
 //Fetch data from API
 
@@ -32,7 +29,7 @@ const getWeatherData = async (url) => {
 	} catch (error) {
 		console.error('Error getting data: ', error);
 	}
-}
+};
 
 // Post data
 
@@ -67,5 +64,4 @@ const updateUI = async () => {
 	} catch (error) {
 		console.error('Error updating UI: ', error)
 	}
-}
-
+};
