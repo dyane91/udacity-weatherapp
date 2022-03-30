@@ -24,11 +24,13 @@ const port = 8000;
 app.listen(port, ()=> console.log(`running on port ${port}`))
 
 //GET route that returns 'projectData' object
-app.get('/', getProjectData);
+
+// POR QUE NO FUNCIONABA SOLO TENIENDO COMO ROUTE '/'
+app.get('/all', getProjectData);
 
 function getProjectData (req, res){
-	res.send(projectData);
 	console.log('Getting projectData: ', projectData)
+	res.send(projectData);
 };
 
 //POST route that adds incoming data to 'projectData'
@@ -38,7 +40,7 @@ function postData (req, res){
 	try {
 		projectData.date = req.body.date,
 		projectData.temperature = req.body.temp,
-		projectData.content = req.body.content,
+		projectData.content = req.body.content || 'nothing'
 		console.log(projectData)
 		res.send(projectData);
 	} catch (error) {
