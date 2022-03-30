@@ -6,6 +6,8 @@ body{
 #app{
     display: grid;
     padding-left: 5em;
+    padding-right: 5em;
+
     /* grid-auto-rows: 10% 20% 70%; */
     grid-template-columns: 60% 40%;
     height:100vh;
@@ -27,16 +29,19 @@ body{
         'feeling'
         'button';
 }
-/* 
+
 #right-content {
-    display: grid;
-    grid-template-rows: 25% 50% 25%;
-    grid-template-columns: 100%;
-    grid-template-areas: 
-        ''
-        'entries'
-        '';
-} */
+    display: flex;
+    align-items: center;
+}
+
+#entries {
+    background: #F4A259;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 25px;
+    padding: 2em;
+}
 
 .headline {
     grid-area: headline;
@@ -89,7 +94,20 @@ body{
 }
 .title{
     text-align: center;
+    font-size: 1.3em;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: underline;
+}
 
+h4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}
+
+h4 > div {
+    font-family: 'Questrial', sans-serif;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
